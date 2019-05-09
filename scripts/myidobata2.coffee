@@ -1,8 +1,7 @@
 module.exports = (robot) ->
   robot.hear /y/i, (res) ->
-    msg.send msg.random ["空いてる時間にさらっとどうぞ http://ebook.itmedia.co.jp/ebook/articles/1310/10/news058.html", 
-			 "１年目でも２年目でも、自分がやるべきことは変わりません。http://bizmakoto.jp/bizid/articles/1312/13/news017.html
-",
+    res.send res.random ["空いてる時間にさらっとどうぞ http://ebook.itmedia.co.jp/ebook/articles/1310/10/news058.html", 
+			 "１年目でも２年目でも、自分がやるべきことは変わりません。http://bizmakoto.jp/bizid/articles/1312/13/news017.html",
 			 "勝負の３～４年目、これからを見据えていきましょう http://bizmakoto.jp/bizid/articles/1312/27/news003.html", 
 			"顧客打ち合わせやＷＧにも通じます。心構え的な感じで意識しておくと、この先伸びるかも http://president.jp/articles/-/12508",
 			"見とけ @IT - 情報交換スキルを高めるテクニックhttp://www.atmarkit.co.jp/ait/articles/1407/08/news007.html",
