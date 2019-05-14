@@ -1,6 +1,6 @@
 module.exports = (robot) ->
   robot.hear /a (.*)/, (msg) ->
-    request = robot.http("https://script.google.com/a/esm.co.jp/macros/s/AKfycbxuMbs2c15Nl2Rhr1rb3YT77xhQVIIWHv-pEvJ2Qoek/exec")
+    request = robot.http("https://script.google.com/macros/s/AKfycbwYpMAdWRGfhi6OyOdwFRW_jYYr3zKrqkHzpAc-qzawGSOMlK0n/exec")
                    .get()
     request (err, res, body) ->
           if err?
