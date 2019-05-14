@@ -1,5 +1,4 @@
 request = require 'request'
-cheerio = require 'cheerio'
  
 module.exports = (robot) ->
   robot.hear /a (.*)/, (msg) ->
@@ -10,6 +9,4 @@ module.exports = (robot) ->
       headers: {'user-agent': 'node title fetcher'}
  
     request options, (error, response, body) ->
-      $ = cheerio.load body
-      title = $('title').text().replace(/\n/g, '')
-      msg.send(title)
+      msg.send 'sccess'
