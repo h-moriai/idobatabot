@@ -4,3 +4,4 @@ module.exports = (robot) ->
             .query(address: msg.match[1])
             .get()
   request (err, res, body) ->
+  return
