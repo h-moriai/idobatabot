@@ -1,3 +1,3 @@
 module.exports = (robot) ->
-  robot.respond / day(.*)/i,(msg) ->
+  robot.respond /hi (.*)/i,(msg) ->
     console.log "Žó•t"
