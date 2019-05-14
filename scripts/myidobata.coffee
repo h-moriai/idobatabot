@@ -3,6 +3,6 @@ module.exports = (robot) ->
     request = robot.http("https://script.google.com/a/esm.co.jp/macros/s/AKfycbxuMbs2c15Nl2Rhr1rb3YT77xhQVIIWHv-pEvJ2Qoek/exec")
                    .get()
     request (err, res, body) ->
-@@return
+      msg.send "err"
 
       msg.send "finish"
