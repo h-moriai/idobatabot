@@ -7,5 +7,4 @@ module.exports = (robot) ->
   url: sheetApi
   }, (err, response, body) ->
   if err
-    console.error err
     return
