@@ -1,6 +1,15 @@
 module.exports = (robot) ->
-  robot.respond /twitter (.*)/i, (msg) ->
-    request = msg.http('https://script.google.com/a/esm.co.jp/macros/s/AKfycbxuMbs2c15Nl2Rhr1rb3YT77xhQVIIWHv-pEvJ2Qoek/dev?InputDate=#{msg.match[1]}')
-    request (err, res, body) ->
-      json = JSON.parse body
-      msg.send json.results[0].text if json.results.length > 0
+  robot.respond / (.*)/i,(msg) ->
+    console.log "Žó•t"
+
+request = require 'request'
+fs = require('fs')
+
+sheetApi = "https://script.google.com/a/esm.co.jp/macros/s/AKfycbxuMbs2c15Nl2Rhr1rb3YT77xhQVIIWHv-pEvJ2Qoek/exec" # GAS‚Å¶¬‚µ‚½API
+
+request {
+  url: sheetApi
+}, (err, response, body) ->
+  if err
+    console.error err
+    return
