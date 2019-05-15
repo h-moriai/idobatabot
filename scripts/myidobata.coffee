@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.respond /\d{4}/\d{1,2}/\d{1,2}, (msg) ->
+  robot.respond /\d{4}/\d{1,2}/\d{1,2}/, (msg) ->
     btag = '<a href="'
     url  = 'https://script.google.com/macros/s/AKfycbwYpMAdWRGfhi6OyOdwFRW_jYYr3zKrqkHzpAc-qzawGSOMlK0n/exec'
     atag = '">'
