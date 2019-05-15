@@ -5,4 +5,4 @@ module.exports = (robot) ->
     atag = '"target="_blank">'
     ftag = "</a>"
     msg.send "ok"
-    msg.send "#{btag}#{url}#{atag}#{msg.match[1]}#{ftag}"
+    msg.send "#{btag}#{url}#{atag}#{msg.match[0]}#{ftag}"
