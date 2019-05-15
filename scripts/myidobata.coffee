@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.hear /\d{4}[/]\d{2}[/]\d{2}/,i (msg) ->
+  robot.hear /\d{4}[/]\d{2}[/]\d{2}/i, (msg) ->
     btag = '<a href="'
     url  = 'https://script.google.com/macros/s/AKfycbwYpMAdWRGfhi6OyOdwFRW_jYYr3zKrqkHzpAc-qzawGSOMlK0n/exec'
     atag = '"target="_blank">'
