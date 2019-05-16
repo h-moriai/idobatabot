@@ -7,7 +7,7 @@ export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
 # Redmine Configurations
 export HUBOT_REDMINE_SSL=""
-export HUBOT_REDMINE_BASE_URL="https://redmine.esm.co.jp/redmine/projects/medical-es-tky/"
+export HUBOT_REDMINE_BASE_URL="https://redmine.esm.co.jp/redmine/"
 export HUBOT_REDMINE_TOKEN="fa7af3c18143d6bba8c48fc4f45d21eb286afd0d"
 export HUBOT_REDMINE_IGNORED_USERS=""
 
