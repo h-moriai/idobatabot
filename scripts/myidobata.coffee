@@ -1,7 +1,7 @@
 module.exports = (robot) ->
   robot.hear /\d{4}[/]\d{2}[/]\d{2}/i, (msg) ->
     btag = '<a href="'
-    url  = 'https://script.google.com/macros/s/AKfycbwYpMAdWRGfhi6OyOdwFRW_jYYr3zKrqkHzpAc-qzawGSOMlK0n/dev?InputDate='
+    url  = 'https://script.google.com/a/esm.co.jp/macros/s/AKfycbyE4Tmqv6xtPwSMVxZiqoaP_m94QJYy6Ocggio-YFqTO7jILEBh/dev?InputDate='
     atag = '" target="_blank">'
     ftag = "</a>"
     adapter  = msg.robot.adapter
@@ -10,7 +10,7 @@ module.exports = (robot) ->
 
   robot.respond /now/i, (msg) ->
     btag = '<a href="'
-    url  = 'https://script.google.com/macros/s/AKfycbwYpMAdWRGfhi6OyOdwFRW_jYYr3zKrqkHzpAc-qzawGSOMlK0n/exec'
+    url  = 'https://script.google.com/a/esm.co.jp/macros/s/AKfycbyE4Tmqv6xtPwSMVxZiqoaP_m94QJYy6Ocggio-YFqTO7jILEBh/exec'
     atag = '" target="_blank">'
     ftag = "</a>"
     adapter  = msg.robot.adapter
