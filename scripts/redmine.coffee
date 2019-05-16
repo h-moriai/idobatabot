@@ -42,6 +42,7 @@ module.exports = (robot) ->
   # Robot link me <issue>
   robot.respond /link me (?:issue )?(?:#)?(\d+)/i, (msg) ->
     id = msg.match[1]
+    msg.send  "#{redmine.url}/issues/#{id}"
     msg.reply "#{redmine.url}/issues/#{id}"
 
   # Robot set <issue> to <percent>% ["comments"]
