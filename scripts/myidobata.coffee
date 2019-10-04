@@ -1,3 +1,5 @@
+cronJob = require('cron').CronJob
+
 module.exports = (robot) ->
   robot.hear /\d{4}[/]\d{2}[/]\d{2}/i, (msg) ->
     btag = '<a href="'
@@ -20,3 +22,46 @@ module.exports = (robot) ->
     month = d.getMonth() + 1    # 月
     date  = d.getDate()         # 日
     adapter.sendHTML envelope, "#{btag}#{url}#{atag}Today_#{year}年#{month}月#{date}日#{ftag}"
+
+   robot.respond /weather (.+)/i, (msg) ->
+    target = msg.match[1]
+    apikey = ""
+    params = "q=#{target},jp&appid=#{apikey}&units=metric"
+    searchWeather(params, target, msg)
+
+   searchWeather = (url, place, msg) ->
+    request = robot.http("http://api.openweathermap.org/data/2.5/weather?#{url}").get()
+    stMessage = request (err, res, body) ->
+      json = JSON.parse body
+      if json['cod'] != 200
+        #APIerror
+        msg.send ":warning:" + json['message']
+        return
+      weatherName = json['weather'][0]['main']
+      icon = json['weather'][0]['icon']
+      temp = json['main']['temp']
+      temp_max = json['main']['temp_max']
+      temp_min = json['main']['temp_min']
+      msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
+
+  new cronJob('0 0 8 * * *', () ->
+    apikey = "84f795e459b830600e9bba62ef978b77"
+    #東京
+    tokyo = "q=Tokyo,jp&appid=#{apikey}&units=metric"
+    #福井
+    fukui = "q=fukui,jp&appid=#{apikey}&units=metric"
+    searchWeatherCron(fukui, "福井")
+    searchWeatherCron(tokyo, "東京")
+  ).start()
+
+  searchWeatherCron = (url, place) -> 
+    request = robot.http("http://api.openweathermap.org/data/2.5/weather?#{url}").get()
+    stMessage = request (err, res, body) ->
+      json = JSON.parse body
+      weatherName = json['weather'][0]['main']
+      icon = json['weather'][0]['icon']
+      temp = json['main']['temp']
+      temp_max = json['main']['temp_max']
+      temp_min = json['main']['temp_min']
+      sendMessage = "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
+      robot.send {room: "#weather_info"}, sendMessage
