@@ -16,10 +16,10 @@ module.exports = (robot) ->
     adapter  = msg.robot.adapter
     envelope = msg.envelope
     d = new Date
-    year  = d.getFullYear()     # ”Ni¼—ïj
-    month = d.getMonth() + 1    # Œ
-    date  = d.getDate()         # “ú
-    adapter.sendHTML envelope, "#{btag}#{url}#{atag}Today_#{year}”N#{month}Œ#{date}“ú#{ftag}"
+    year  = d.getFullYear()     # å¹´ï¼ˆè¥¿æš¦ï¼‰
+    month = d.getMonth() + 1    # æœˆ
+    date  = d.getDate()         # æ—¥
+    adapter.sendHTML envelope, "#{btag}#{url}#{atag}Today_#{year}/#{month}/#{date}/#{ftag}"
 
    robot.hear /weather (.+)/i, (msg) ->
     target = msg.match[1]
@@ -40,4 +40,4 @@ module.exports = (robot) ->
       temp = json['main']['temp']
       temp_max = json['main']['temp_max']
       temp_min = json['main']['temp_min']
-      msg.send "¡“ú‚Ì#{place}‚Ì“V‹C‚Íu" + weatherName + "v‚Å‚·B\n‹C‰·:"+ temp + " Å‚‹C‰·F"  + temp_max+ " Å’á‹C‰·F" + temp_min + "\nhttp://openweathermap.org/img/w/" + icon + ".png"
+      msg.send "ä»Šæ—¥ã®#{place}ã®å¤©æ°—ã¯ã€Œ" + weatherName + "ã€ã§ã™ã€‚\næ°—æ¸©:"+ temp + "â„ƒ æœ€é«˜æ°—æ¸©ï¼š"  + temp_max+ "â„ƒ æœ€ä½æ°—æ¸©ï¼š" + temp_min + "â„ƒ\nhttp://openweathermap.org/img/w/" + icon + ".png"
