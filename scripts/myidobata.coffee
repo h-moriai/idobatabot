@@ -8,7 +8,7 @@ module.exports = (robot) ->
     envelope = msg.envelope
     adapter.sendHTML envelope, "#{btag}#{url}#{msg.match[0]}#{atag}#{msg.match[0]}#{ftag}"
 
-  robot.respond /now/i, (msg) ->
+  robot.hear /now/i, (msg) ->
     btag = '<a href="'
     url  = 'https://script.google.com/a/esm.co.jp/macros/s/AKfycbyE4Tmqv6xtPwSMVxZiqoaP_m94QJYy6Ocggio-YFqTO7jILEBh/exec'
     atag = '" target="_blank">'
@@ -21,7 +21,7 @@ module.exports = (robot) ->
     date  = d.getDate()         # “ú
     adapter.sendHTML envelope, "#{btag}#{url}#{atag}Today_#{year}”N#{month}Œ#{date}“ú#{ftag}"
 
-   robot.respond /weather (.+)/i, (msg) ->
+   robot.hear /weather (.+)/i, (msg) ->
     target = msg.match[1]
     apikey = "84f795e459b830600e9bba62ef978b77"
     params = "q=#{target},jp&appid=#{apikey}&units=metric"
