@@ -41,3 +41,24 @@ module.exports = (robot) ->
       temp_max = json['main']['temp_max']
       temp_min = json['main']['temp_min']
       msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
+
+   robot.hear /(.+)の天気/i, (msg) ->
+    target = msg.match[1]
+    apikey = "84f795e459b830600e9bba62ef978b77"
+    params = "q=#{target},jp&appid=#{apikey}&units=metric"
+    searchWeather(params, target, msg)
+
+   searchWeather = (url, place, msg) ->
+    request = robot.http("http://api.openweathermap.org/data/2.5/weather?#{url}").get()
+    stMessage = request (err, res, body) ->
+      json = JSON.parse body
+      if json['cod'] != 200
+        #APIerror
+        msg.send ":warning:" + json['message']
+        return
+      weatherName = json['weather'][0]['main']
+      icon = json['weather'][0]['icon']
+      temp = json['main']['temp']
+      temp_max = json['main']['temp_max']
+      temp_min = json['main']['temp_min']
+      msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
