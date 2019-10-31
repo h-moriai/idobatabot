@@ -62,3 +62,14 @@ module.exports = (robot) ->
       temp_max = json['main']['temp_max']
       temp_min = json['main']['temp_min']
       msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
+
+   robot.hear /\d{7}\D{1}\d{4}/i, (msg) ->
+    yj = msg.match[1]
+    http = "http://rest.kegg.jp/find/yj/#{yj}"
+    searchYJ(yj, http, msg)
+
+   searchYJ = (url, yj, msg) ->
+    request = robot.http("#{url}").get().split(" ")
+    DrugYJ  = request[0]
+    DrugName = request[1]
+    msg.send "#{DrugYJ}:#{DrugName}"
