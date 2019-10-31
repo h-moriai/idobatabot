@@ -62,8 +62,3 @@ module.exports = (robot) ->
       temp_max = json['main']['temp_max']
       temp_min = json['main']['temp_min']
       msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
-
-  robot.hear /\d{7}/i, (msg) ->
-    yj = msg.match[0]
-    msg.send "#{yj}"
-
