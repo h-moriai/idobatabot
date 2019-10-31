@@ -65,5 +65,4 @@ module.exports = (robot) ->
 
   robot.hear /\d{7}\D{1}\d{4}/i, (msg) ->
     yj = msg.match[0]
-    http = "http://rest.kegg.jp/find/yj/#{yj}"
-    msg.send "#{http}"
+    msg.send "#{yj}"
