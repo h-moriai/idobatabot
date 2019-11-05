@@ -66,10 +66,4 @@ module.exports = (robot) ->
    robot.hear /\d{7}\D{1}\d{4}/i, (msg) ->
     yj = msg.match[1]
     http = "http://rest.kegg.jp/find/yj/#{yj}"
-    searchYJ(yj, http, msg)
-
-   searchYJ = (url, yj, msg) ->
-    request = robot.http("#{url}").get().split(" ")
-    DrugYJ  = request[0]
-    DrugName = request[1]
-    msg.send "#{DrugYJ}/#{DrugName}"
+    msg.send "#{http}"
