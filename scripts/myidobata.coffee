@@ -72,5 +72,5 @@ module.exports = (robot) ->
     request = robot.http("#{url}").get()
     msg.send "#{request}"
 
-   robot.hear /ディーラー/i, (msg) ->
+   robot.hear /(.*)ディーラー(.*)/i, (msg) ->
     msg.send "バックアップを必ず取りましょう！\nＩＦ相対マスタを変更する場合、マスタ保守する人は注意しましょう！"
