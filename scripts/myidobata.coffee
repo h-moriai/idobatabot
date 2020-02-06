@@ -64,6 +64,13 @@ module.exports = (robot) ->
       msg.send "今日の#{place}の天気は「" + weatherName + "」です。\n気温:"+ temp + "℃ 最高気温："  + temp_max+ "℃ 最低気温：" + temp_min + "℃\nhttp://openweathermap.org/img/w/" + icon + ".png"
 
    robot.hear /\d{7}\D{1}\d{4}/i, (msg) ->
-    yj = msg.match[1]
+    yj = msg.match[0]
     http = "http://rest.kegg.jp/find/yj/#{yj}"
-    msg.send "#{http}"
+    searchYJ(yj, http, msg)
+
+   searchYJ = (url, yj, msg) ->
+    request = robot.http("#{url}").get()
+    msg.send "#{request}"
+
+   robot.hear /ディーラー/i, (msg) ->
+    msg.send "バックアップを必ず取りましょう！\nＩＦ相対マスタを変更する場合、マスタ保守する人は注意しましょう！"
